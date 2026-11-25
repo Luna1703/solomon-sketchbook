@@ -1021,6 +1021,116 @@
       outline-offset: 2px;
     }
 
+    /* ---- Крестики-нолики ---- */
+    .game-score {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      max-width: 420px;
+    }
+
+    .score-cell {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1.5px dashed var(--ink-border);
+      border-radius: 8px;
+      background: rgba(255, 250, 242, 0.55);
+      text-align: center;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-burgundy);
+    }
+
+    .score-cell b {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--ink-red);
+      line-height: 1.2;
+    }
+
+    .ttt-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: min(300px, 100%);
+      margin: 6px auto 22px;
+      transform: rotate(-0.6deg);
+    }
+
+    .ttt-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 2.5px solid var(--ink-red);
+      border-bottom: 2.5px solid var(--ink-red);
+      border-radius: 0;
+      color: var(--ink-red);
+      transition: background 0.15s ease;
+    }
+
+    .ttt-cell:nth-child(3n) { border-right: none; }
+    .ttt-cell:nth-child(n+7) { border-bottom: none; }
+    .ttt-cell:not(:disabled):hover { background: var(--ink-soft); }
+    .ttt-cell:disabled { cursor: default; }
+    .ttt-cell.win { background: rgba(200, 62, 43, 0.18); }
+    .ttt-cell.mark-o { color: var(--ink-burgundy); }
+
+    .ttt-cell svg {
+      width: 62%;
+      height: 62%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 7;
+      stroke-linecap: round;
+    }
+
+    .ttt-cell svg .draw {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: inkDraw 0.35s ease forwards;
+    }
+
+    .ttt-cell svg .draw.d2 { animation-delay: 0.18s; }
+
+    @keyframes inkDraw { to { stroke-dashoffset: 0; } }
+
+    .game-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--ink-border);
+    }
+
+    .game-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .diff-switch {
+      display: inline-flex;
+      border: 1.5px solid var(--ink-red);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .diff-btn {
+      padding: 9px 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--ink-red);
+    }
+
+    .diff-btn + .diff-btn { border-left: 1.5px solid var(--ink-red); }
+    .diff-btn.active { background: var(--ink-red); color: var(--paper-top); }
+
+    @media (max-width: 820px) {
+      .game-actions { width: 100%; }
+      .diff-switch { width: 100%; }
+      .diff-btn { flex: 1; }
+    }
+
     .axis-bars { margin-top: 14px; max-width: 470px; display: grid; gap: 7px; }
 
     .axis-row {
@@ -1278,6 +1388,9 @@
         <span data-i18n="tab2">02. Общий язык с Тиграном</span>
         <span class="tab-pill-badge">ENTP</span>
       </button>
+      <button type="button" class="notebook-tab" role="tab" aria-selected="false" data-mode="game" id="tabGame">
+        <span data-i18n="tab3">03. Крестики-нолики</span>
+      </button>
     </div>
 
     <div class="sketchbook-cover">
@@ -1390,6 +1503,38 @@
         <!-- ==================================================================
              SCREEN 3: RESULT SPREAD (Архивный вердикт)
              ================================================================== -->
+        <!-- ==================================================================
+             SCREEN 4: GAME SPREAD (крестики-нолики против Соломона)
+             ================================================================== -->
+        <div id="gameScreen" class="hidden">
+          <section class="page-upper page-fade">
+            <div class="quiz-top-bar">
+              <span class="archive-stamp-pill" data-i18n="gameSig">КРЕСТИКИ-НОЛИКИ</span>
+              <span class="hero-ink-caption" data-i18n="gameCaption">Партия против Соломона</span>
+            </div>
+            <h2 class="quiz-question-heading" id="gameStatus" aria-live="polite"></h2>
+            <div class="game-score" id="gameScore"></div>
+          </section>
+
+          <div class="page-crease" aria-hidden="true"></div>
+
+          <section class="page-lower page-fade">
+            <span class="crease-footnote" data-i18n="gameFootnote">*первый ход чередуется</span>
+            <div class="ttt-board" id="tttBoard" role="group" data-i18n-aria="aBoard"></div>
+            <div class="game-controls">
+              <div class="diff-switch" role="group" data-i18n-aria="diffLabel" id="diffSwitch">
+                <button type="button" class="diff-btn" data-diff="easy" data-i18n="diffEasy">Легко</button>
+                <button type="button" class="diff-btn" data-diff="medium" data-i18n="diffMedium">Средне</button>
+                <button type="button" class="diff-btn" data-diff="hard" data-i18n="diffHard">Невозможно</button>
+              </div>
+              <div class="game-actions">
+                <button type="button" class="ink-btn ink-btn-primary" id="newRoundBtn" data-i18n="newRound">Новая партия</button>
+                <button type="button" class="ink-btn ink-btn-outline" id="resetScoreBtn" data-i18n="resetScore">Обнулить счёт</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
         <div id="resultScreen" class="hidden">
           <section class="page-upper page-fade">
             <div class="result-upper-layout">
@@ -2064,11 +2209,27 @@
     const axisBars = $('axisBars');
     const getStruct = () => TESTS_DATA[state.mode];
 
+    const gameScreen = $('gameScreen'), tabGame = $('tabGame');
+
+    // Вкладка активна по state.mode, а в игре — «Крестики-нолики»
+    function syncTabs() {
+      const inGame = state.screen === 'game';
+      [[tabSolomon, 'solomon'], [tabTigran, 'tigran']].forEach(([tab, mode]) => {
+        const on = !inGame && state.mode === mode;
+        tab.classList.toggle('active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      tabGame.classList.toggle('active', inGame);
+      tabGame.setAttribute('aria-selected', inGame ? 'true' : 'false');
+    }
+
     function showScreen(name) {
       state.screen = name;
       welcomeScreen.classList.toggle('hidden', name !== 'welcome');
       quizScreen.classList.toggle('hidden', name !== 'quiz');
       resultScreen.classList.toggle('hidden', name !== 'result');
+      gameScreen.classList.toggle('hidden', name !== 'game');
+      syncTabs();
     }
 
     // ---- Язык ---------------------------------------------------------------
@@ -2101,6 +2262,7 @@
       refreshDrawer();
       if (state.screen === 'quiz') renderQuestion();
       if (state.screen === 'result') renderVerdict(false);
+      renderGame();
     }
 
     // ---- Арт ----------------------------------------------------------------
@@ -2140,10 +2302,7 @@
     function renderWelcomeForCurrentMode() {
       const cfg = getStruct(), T = tx();
 
-      tabSolomon.classList.toggle('active', state.mode === 'solomon');
-      tabSolomon.setAttribute('aria-selected', state.mode === 'solomon' ? 'true' : 'false');
-      tabTigran.classList.toggle('active', state.mode === 'tigran');
-      tabTigran.setAttribute('aria-selected', state.mode === 'tigran' ? 'true' : 'false');
+      syncTabs();
 
       heroSignature.textContent = T.signature;
       heroRole.textContent = T.role;
@@ -2332,9 +2491,179 @@
       showScreen('quiz');
     }
 
+    // ---- Крестики-нолики (игрок = X, Соломон = O) -----------------------------------
+    const WIN_LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    const game = {
+      board: new Array(9).fill(null),
+      turn: 'X',
+      starter: 'X',
+      over: false,
+      winLine: null,
+      result: null,            // 'X' | 'O' | 'draw' | null
+      score: { X: 0, draw: 0, O: 0 },
+      diff: 'medium',
+      timer: 0
+    };
+
+    function findWinner(b) {
+      for (const line of WIN_LINES) {
+        const [a, c, d] = line;
+        if (b[a] && b[a] === b[c] && b[a] === b[d]) return { mark: b[a], line };
+      }
+      return null;
+    }
+
+    const emptyCells = (b) => b.reduce((acc, v, i) => (v ? acc : acc.concat(i)), []);
+
+    // Полный перебор: Соломон (O) на «Невозможно» не проигрывает
+    function minimax(b, isO, depth) {
+      const w = findWinner(b);
+      if (w) return w.mark === 'O' ? 10 - depth : depth - 10;
+      const free = emptyCells(b);
+      if (!free.length) return 0;
+      let best = isO ? -Infinity : Infinity;
+      for (const i of free) {
+        b[i] = isO ? 'O' : 'X';
+        const s = minimax(b, !isO, depth + 1);
+        b[i] = null;
+        best = isO ? Math.max(best, s) : Math.min(best, s);
+      }
+      return best;
+    }
+
+    function winningMove(b, mark) {
+      for (const i of emptyCells(b)) {
+        b[i] = mark;
+        const w = findWinner(b);
+        b[i] = null;
+        if (w) return i;
+      }
+      return -1;
+    }
+
+    function pickAiMove() {
+      const b = game.board.slice();
+      const free = emptyCells(b);
+      const random = () => free[Math.floor(Math.random() * free.length)];
+
+      if (game.diff === 'easy') return random();
+      if (game.diff === 'medium') {
+        const win = winningMove(b, 'O');
+        if (win >= 0) return win;
+        const block = winningMove(b, 'X');
+        return block >= 0 ? block : random();
+      }
+      let bestScore = -Infinity, bestMoves = [];
+      for (const i of free) {
+        b[i] = 'O';
+        const s = minimax(b, false, 1);
+        b[i] = null;
+        if (s > bestScore) { bestScore = s; bestMoves = [i]; }
+        else if (s === bestScore) bestMoves.push(i);
+      }
+      return bestMoves[Math.floor(Math.random() * bestMoves.length)];
+    }
+
+    function finishIfOver() {
+      const w = findWinner(game.board);
+      if (w) {
+        game.over = true; game.winLine = w.line; game.result = w.mark;
+        game.score[w.mark]++;
+      } else if (!emptyCells(game.board).length) {
+        game.over = true; game.result = 'draw';
+        game.score.draw++;
+      }
+      return game.over;
+    }
+
+    function aiTurn() {
+      clearTimeout(game.timer);
+      game.timer = setTimeout(() => {
+        if (game.over || game.turn !== 'O') return;
+        game.board[pickAiMove()] = 'O';
+        if (!finishIfOver()) game.turn = 'X';
+        renderGame();
+      }, 450);
+    }
+
+    function playerMove(i) {
+      if (game.over || game.turn !== 'X' || game.board[i]) return;
+      game.board[i] = 'X';
+      if (!finishIfOver()) { game.turn = 'O'; aiTurn(); }
+      renderGame();
+    }
+
+    function newRound(flipStarter = true) {
+      clearTimeout(game.timer);
+      if (flipStarter) game.starter = game.starter === 'X' ? 'O' : 'X';
+      game.board = new Array(9).fill(null);
+      game.over = false; game.winLine = null; game.result = null;
+      game.turn = game.starter;
+      renderGame();
+      if (game.turn === 'O') aiTurn();
+    }
+
+    function markSvg(mark) {
+      return mark === 'X'
+        ? '<svg viewBox="0 0 40 40" aria-hidden="true"><path class="draw" pathLength="100" d="M7 7 L33 33"/><path class="draw d2" pathLength="100" d="M33 7 L7 33"/></svg>'
+        : '<svg viewBox="0 0 40 40" aria-hidden="true"><path class="draw" pathLength="100" d="M20 5 C31 4 36 13 34 23 C32 33 22 36 14 33 C6 29 4 18 10 11 C13 7 17 5 22 6"/></svg>';
+    }
+
+    function renderGame() {
+      const board = $('tttBoard');
+      const prevBoard = board.dataset.rendered ? JSON.parse(board.dataset.rendered) : [];
+      board.innerHTML = '';
+      game.board.forEach((mark, i) => {
+        const cell = document.createElement('button');
+        cell.type = 'button';
+        cell.className = 'ttt-cell' + (mark === 'O' ? ' mark-o' : '') + (game.winLine && game.winLine.includes(i) ? ' win' : '');
+        cell.setAttribute('aria-label', `${ui('aCell')} ${i + 1}${mark ? ': ' + mark : ''}`);
+        cell.disabled = !!mark || game.over || game.turn !== 'X';
+        if (mark) {
+          cell.innerHTML = markSvg(mark);
+          // уже стоявшие знаки не перерисовываем заново
+          if (prevBoard[i] === mark) cell.querySelectorAll('.draw').forEach(p => { p.style.animation = 'none'; p.style.strokeDashoffset = '0'; });
+        }
+        cell.addEventListener('click', () => playerMove(i));
+        board.appendChild(cell);
+      });
+      board.dataset.rendered = JSON.stringify(game.board);
+
+      const status = game.over
+        ? (game.result === 'X' ? ui('winYou') : game.result === 'O' ? ui('winComp') : ui('draw'))
+        : (game.turn === 'X' ? ui('statusYou') : ui('statusComp'));
+      $('gameStatus').textContent = status;
+
+      $('gameScore').innerHTML =
+        `<div class="score-cell">${escapeXml(ui('scoreYou'))}<b>${game.score.X}</b></div>` +
+        `<div class="score-cell">${escapeXml(ui('scoreDraw'))}<b>${game.score.draw}</b></div>` +
+        `<div class="score-cell">${escapeXml(ui('scoreComp'))}<b>${game.score.O}</b></div>`;
+
+      document.querySelectorAll('.diff-btn').forEach(b => {
+        const on = b.dataset.diff === game.diff;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+
+    function openGame() {
+      toggleDrawer(null);
+      showScreen('game');
+      renderGame();
+      if (game.turn === 'O' && !game.over) aiTurn(); // партия, начатая Соломоном, не должна зависнуть
+    }
+
+    document.querySelectorAll('.diff-btn').forEach(b => b.addEventListener('click', () => {
+      game.diff = b.dataset.diff;
+      renderGame();
+    }));
+    $('newRoundBtn').addEventListener('click', () => newRound(true));
+    $('resetScoreBtn').addEventListener('click', () => { game.score = { X: 0, draw: 0, O: 0 }; newRound(false); });
+
     // ---- События ------------------------------------------------------------------
     tabSolomon.addEventListener('click', () => switchMode('solomon'));
     tabTigran.addEventListener('click', () => switchMode('tigran'));
+    tabGame.addEventListener('click', openGame);
     switchModeSecondaryBtn.addEventListener('click', () => switchMode(getStruct().otherMode));
     resultSwitchTabBtn.addEventListener('click', () => switchMode(getStruct().otherMode));
 

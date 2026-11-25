@@ -30,7 +30,27 @@ window.I18N.en = {
     "aNav": "Archive navigation",
     "aTabs": "Choose a test",
     "aLang": "Language",
-    "aPercent": "Match percentage"
+    "aPercent": "Match percentage",
+    "tab3": "03. Tic-tac-toe",
+    "gameSig": "TIC-TAC-TOE",
+    "gameCaption": "A game against Solomon · red ink",
+    "gameFootnote": "*you play crosses, and the first move alternates every round",
+    "aBoard": "Game board",
+    "aCell": "Cell",
+    "diffLabel": "Difficulty",
+    "diffEasy": "Easy",
+    "diffMedium": "Medium",
+    "diffHard": "Unbeatable",
+    "newRound": "New round",
+    "resetScore": "Reset score",
+    "statusYou": "Your move",
+    "statusComp": "Solomon is thinking…",
+    "winYou": "You won. Solomon approves.",
+    "winComp": "Solomon won. Dry irony counted.",
+    "draw": "A draw. Worthy of the archive.",
+    "scoreYou": "You",
+    "scoreDraw": "Draws",
+    "scoreComp": "Solomon"
   },
   "drawers": {
     "about": {
