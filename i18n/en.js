@@ -215,7 +215,7 @@ window.I18N.en = {
       "role": "Debater · Strategist · Engineer of meanings",
       "title": "Will you find<br /><span class=\"handwritten-word\">common ground?</span>",
       "caption": "Compatibility protocol · MBTI: ENTP & live dialogue",
-      "footnote": "*calibrated on texting style, sense of humor, love of paradox, structure and intellectual sparring",
+      "footnote": "*scored on three axes: taste & topics, arguing for the truth, communication format. Empty pathos lowers the result.",
       "description": "Tigran has the rare ENTP combination: an explosive idea generator, dry absurd humor and a love of deep topics (history, design, investigations, board games) paired with a love of clear structure in practical matters. Check how easily you will catch the same wave.",
       "startBtn": "Check common ground →",
       "switchSecondary": "Back to the \"How Solomon are you?\" test",
@@ -238,75 +238,75 @@ window.I18N.en = {
       },
       "questions": [
         {
-          "text": "In conversation and texting you prefer:",
+          "text": "An evening of music and film. What interests you more?",
           "options": [
-            "Clear, to the point and in bullet points — so it is immediately obvious what is what.",
-            "Through jokes, light absurdity and irony — even when the topic is serious.",
-            "Calm, thoughtful and detailed, without fuss.",
-            "On a roll: short replies, fast exchange of ideas and vibes."
+            "Picking a film or album with character and then dissecting it.",
+            "Putting on whatever everyone is talking about.",
+            "Anything, as long as it is background.",
+            "A classic I have wanted to rewatch for a long time."
           ]
         },
         {
-          "text": "How do you feel about plans, lists and procedures?",
+          "text": "What could you talk about with Tigran for hours?",
           "options": [
-            "I love it when everything is sorted onto shelves — it instantly gets easier to breathe.",
-            "A useful base, but in life you still have to improvise as you go.",
-            "I add just as much structure as needed so as not to drown in chaos.",
-            "Rigid frames suffocate — freedom and movement suit me better."
+            "Philosophy, history, human fates and the motives behind actions.",
+            "Design, film, music and how cool things are built.",
+            "Only the everyday and practical.",
+            "I do not mind, as long as we are not silent."
           ]
         },
         {
-          "text": "What is good humor to you?",
+          "text": "Your taste in music and film:",
           "options": [
-            "Dry irony that points out the absurdities of everyday life.",
-            "Unexpected absurdity and strange turns that first make you stare silently at a point.",
-            "Subtle sarcasm that hits the character of a person or situation.",
-            "Lively, fast comedy without long hidden depths."
+            "I like the deep and characterful: rock, noir, auteur cinema.",
+            "I like variety, as long as it has soul.",
+            "Only the popular and light.",
+            "Music and film do not interest me much."
           ]
         },
         {
-          "text": "What could you talk about for hours if a topic hooks you?",
+          "text": "Tigran challenges your idea. You:",
           "options": [
-            "History, empires, human fates, philosophy and the hidden motives behind actions.",
-            "Design, visuals, film, music, games and how cool things work on the inside.",
-            "Strange facts, investigations, puzzles and \"how does this even work\".",
-            "Life stories, adventures, arguments about taste and tales \"from practice\"."
+            "Answer with arguments and see what survives the test.",
+            "Enjoy the debate: if he is right, I admit it.",
+            "Push with emotions and get offended.",
+            "Wrap up the conversation."
           ]
         },
         {
-          "text": "Your reaction when something goes off plan right before a deadline or a meeting:",
+          "text": "The argument hit a dead end. What next?",
           "options": [
-            "I quickly rebuild the route and look for a working solution instead of panicking.",
-            "I make an ironic remark like \"classic\" and do what needs doing.",
-            "I collect my thoughts, set priorities and finish the main thing.",
-            "I take it philosophically: whatever has not broken for good, we will survive."
+            "Look for a shared fact or example to lean on.",
+            "Defuse with a joke and return to the topic.",
+            "Stay with my view and close the topic.",
+            "Cite authorities and loud words."
           ]
         },
         {
-          "text": "Which way of spending time together resonates more?",
+          "text": "What sounds best in a talk about principles?",
           "options": [
-            "A quiet evening with music, heart-to-heart talks or digging into interesting topics.",
-            "Board games, games, film or a joint creative \"let's build something\".",
-            "A walk, a change of place, the road and watching the city around.",
-            "Spontaneous get-togethers where everything is decided on the spot without extra pathos."
+            "Plain facts and examples.",
+            "Beautiful loud words about lofty things.",
+            "A personal story.",
+            "A quote from a great person."
           ]
         },
         {
-          "text": "What annoys you most in dealing with people?",
+          "text": "The ideal evening with Tigran:",
           "options": [
-            "Empty pathos, claiming the ultimate truth and no self-irony.",
-            "Vagueness, dodging a direct answer and chaos for chaos's sake.",
-            "Superficiality and indifference to detail when everyone says \"good enough\".",
-            "Dullness, nitpicking and extra drama out of nowhere."
+            "A long conversation: topics, arguments, ideas.",
+            "A film and a discussion afterward.",
+            "Short texting and memes.",
+            "A joint project with a deadline."
           ]
         },
         {
-          "text": "If you imagine your shared vibe as a soundtrack or a mood:",
+          "text": "How long does a conversation need to open up?",
           "options": [
-            "Deep rock, a dark atmosphere and a sense of a long road ahead.",
-            "Contrast: a little noir, a little irony and a dense rhythm.",
-            "Calm evening focus with warm light and good taste.",
-            "A lively, unpredictable mix — from quiet talk to loud laughter."
+            "A few hours, until the topic is fully explored.",
+            "An hour or an hour and a half.",
+            "About twenty minutes.",
+            "A couple of lines."
           ]
         }
       ],
@@ -314,39 +314,48 @@ window.I18N.en = {
         {
           "title": "Parallel Universes",
           "lead": "You speak on different frequencies: where an ENTP starts a thought experiment and argues for the thrill, you want quiet and predictability.",
-          "match": "Mutual politeness at the start and the ability not to get in each other's way.",
-          "diff": "The pace of dialogue is too different: paradoxes, dry sarcasm and jumping between ten topics in one evening can tire you fast.",
           "advice": "If a conversation starts, stick to concrete practical tasks — there you will certainly agree."
         },
         {
           "title": "Diplomatic Neutrality",
           "lead": "You can have a great chat over tea or quickly settle a work question, as long as you stay out of long philosophical battles.",
-          "match": "Respect for common sense and the ability to enjoy a good joke without extra drama.",
-          "diff": "Tigran (ENTP) may miss intellectual sparring and absurdity, and you may miss a slightly more even, calm rhythm.",
           "advice": "Your best format is discussing a specific film, game or project without sliding into endless \"what ifs\"."
         },
         {
           "title": "Reliable Dialogue Ally",
           "lead": "Good working and human contact. You are not scared by irony, you value structure in practical matters and you are ready to dig below the surface.",
-          "match": "A dislike of empty pathos, a love of detail and the ability to switch from a joke to a clear plan.",
-          "diff": "Sometimes the ENTP urge to test any idea by arguing may feel a bit sharp to you — but it comes from interest, not malice.",
           "advice": "Feel free to throw an unusual hypothesis or good music into the conversation — the connection will strengthen right away."
         },
         {
           "title": "Co-author of Night Theories",
           "lead": "High compatibility. You easily jump from historical paradoxes and design to dry absurd humor and clear diagrams.",
-          "match": "A sharp mind, self-irony, a love of deep dives and the ability not to turn disagreement into offense.",
-          "diff": "Perhaps only in the argument over who is in charge of procedure today and who generates the crazy ideas.",
           "advice": "The ideal setting: a board game, a long evening conversation or a joint project with a deadline."
         },
         {
           "title": "Absolute ENTP-Level Resonance",
           "lead": "A rare hit on the same frequency. You catch hints, laugh at the same absurd twists and equally value order with character.",
-          "match": "Almost the whole spectrum: from a bullet-point texting style and dry sarcasm to a love of history, games and night-time focus.",
-          "diff": "The only risk is talking until four in the morning, taking apart how the world works and why people do what they do.",
           "advice": "Open the chat right now or sit down at one table: there will not be a boring minute."
         }
-      ]
+      ],
+      "axes": {
+        "taste": {
+          "name": "Taste & topics",
+          "hi": "Taste and topics match: music, film and deep conversation are on one wavelength.",
+          "lo": "Different tastes and topics: Tigran loves music, films and deep subjects, and this does not hook you."
+        },
+        "debate": {
+          "name": "Arguing for the truth",
+          "hi": "You argue to the point: arguments matter more than emotions, and arguing for the truth suits you both.",
+          "lo": "Arguments may not click: Tigran needs reasons, not emotions and loud words."
+        },
+        "format": {
+          "name": "Communication format",
+          "hi": "The format matches: long evening conversations will work for you.",
+          "lo": "The format differs: Tigran expects long evening talks, not short replies."
+        }
+      },
+      "flagNote": "Red flag: your answers include empty pathos or loud words instead of arguments. For Tigran that is the top irritant, so the result is capped.",
+      "noGap": "No serious gaps: you are close on every axis."
     }
   }
 };
